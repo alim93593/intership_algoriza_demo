@@ -1,9 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_print
 
 
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/componnents/default_form_feild.dart';
+import 'package:untitled/componnents/default_text_button.dart';
 import 'package:untitled/componnents/main_componnents.dart';
 
 
@@ -34,7 +33,7 @@ class DemoRegisterScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                      'Register Now to E-commerce App',
+                      'Register Now to communicate with friends',
                       style:Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: Colors.grey
                       )
@@ -69,43 +68,17 @@ class DemoRegisterScreen extends StatelessWidget {
                       prefix: Icons.email_outlined
                   ),
                   SizedBox(height: 15.0,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey,width: 2),
-                          borderRadius: BorderRadius.all(Radius.circular(5))
-                        ),
-                        child: CountryCodePicker(
-                          onChanged: print,
-                          initialSelection: 'IT',
-                          favorite: ['+39','FR'],
-                          showCountryOnly: false,
-                          showOnlyCountryWhenClosed: false,
-                          alignLeft: false,
-                        ),
-                      ),
-                      SizedBox(width: 5,),
-                      Expanded(
-                        child: Container(
-                          width: 200,
-                          child: DefaultFormFeild(
-                              controller: phonecontroller,
-                              type: TextInputType.phone,
-                              validate: ( value){
-                                if(value.isEmpty){
-                                  return 'Please Enter Your Phone';
-                                }
-                                return null;
-                              },
-                                label: 'Phone Number',
-                                prefix: Icons.phone
-                          ),
-                        ),
-                      ),
-                    ],
+                  DefaultFormFeild(
+                      controller: passwordcontroller,
+                      type: TextInputType.visiblePassword,
+                      validate: ( value){
+                        if(value.isEmpty){
+                          return 'Please Enter Your Phone';
+                        }
+                        return null;
+                      },
+                        label: 'Phone Number',
+                        prefix: Icons.phone
                   ),
                   SizedBox(height: 15.0,),
                   DefaultFormFeild(

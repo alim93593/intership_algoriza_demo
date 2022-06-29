@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:untitled/componnents/main_componnents.dart';
 import 'package:untitled/shared/local_data/cache_helper.dart';
-import 'package:untitled/ui/demo_login_screen.dart';
 
 class BoardingModel{
   final String image;
@@ -43,10 +42,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           defaultTextButton(
               text: 'Skip',
-              myColor: Colors.black,
+              myColor: Colors.white,
               function: (){
                 onsubmit();
-                navigateandfinish(context, DemoLoginScreen());
               }
           ),
         ],
@@ -102,7 +100,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   onPressed: () {
                     if(isLast){
                       onsubmit();
-                      navigateto(context, DemoLoginScreen());
                     }else{
                       Boardingcontroller.nextPage(
                           duration: Duration(milliseconds: 750),

@@ -2,7 +2,11 @@
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:untitled/componnents/default_form_feild.dart';
+=======
+import 'package:untitled/componnents/default_text_button.dart';
+>>>>>>> 1d28606ef00a72245536233689fd44dd4867c17f
 import 'package:untitled/componnents/main_componnents.dart';
 import 'package:untitled/ui/demo_register_screen.dart';
 
@@ -25,6 +29,7 @@ class DemoLoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+<<<<<<< HEAD
                   Text(
                     'Login Now to E-commerce App',
                     style:Theme.of(context).textTheme.headline4!.copyWith(
@@ -41,19 +46,48 @@ class DemoLoginScreen extends StatelessWidget {
                           style:Theme.of(context).textTheme.bodyText1!.copyWith(
                               color: Colors.grey
                           )
+=======
+                  Row(
+                    children: [
+                      Text(
+                        'LOGIN',
+                        style:Theme.of(context).textTheme.headline4!.copyWith(
+                            color: Colors.black
+                        ),
+>>>>>>> 1d28606ef00a72245536233689fd44dd4867c17f
                       ),
                       Container(
                         child: CountryCodePicker(
                           onChanged: print,
+<<<<<<< HEAD
                           initialSelection: 'IT',
                           favorite: ['+39','FR'],
                           showCountryOnly: false,
                           showOnlyCountryWhenClosed: false,
+=======
+                          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                          initialSelection: 'IT',
+                          favorite: ['+39','FR'],
+                          // optional. Shows only country name and flag
+                          showCountryOnly: false,
+                          // optional. Shows only country name and flag when popup is closed.
+                          showOnlyCountryWhenClosed: false,
+                          // optional. aligns the flag and the Text left
+>>>>>>> 1d28606ef00a72245536233689fd44dd4867c17f
                           alignLeft: false,
                         ),
                       ),
                     ],
                   ),
+<<<<<<< HEAD
+=======
+                  Text(
+                      'Login Now to communicate with friends',
+                      style:Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: Colors.grey
+                      )
+                  ),
+>>>>>>> 1d28606ef00a72245536233689fd44dd4867c17f
                   SizedBox(height: 30.0,),
                   DefaultFormFeild(
                       controller: emailcontroller,
