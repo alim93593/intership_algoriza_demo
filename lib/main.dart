@@ -1,48 +1,48 @@
+
+
+
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:untitled/componnents/styles/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/shared/local_data/cache_helper.dart';
-import 'package:untitled/ui/demo_login_screen.dart';
-import 'package:untitled/ui/on_boarding_screen.dart';
+import 'package:untitled/ui/widgets/home_page.dart';
+
+import 'componnents/style/theme.dart';
+import 'ui/app_main_cubit/cubit.dart';
+import 'ui/app_main_cubit/state.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
-  Widget widget;
-  bool onBoarding = CacheHelper.getData(key: 'onBoarding')??false;
-  if(onBoarding==true){
-    widget = DemoLoginScreen();
-  }else{
-    widget =OnBoardingScreen();
-  }
+  bool isDark = CacheHelper.getData(key: 'isDark')??false;
   runApp( MyApp(
-    startwidget: widget,
+    isDark: isDark,
   ));
 }
 class MyApp extends StatelessWidget {
-  MyApp({required this.startwidget});
-  final Widget startwidget;
+
+  MyApp({required this.isDark});
+  final bool isDark;
+  static final navigatorKey = new GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme:lightTheme,
-      themeMode: ThemeMode.light,
-      home: startwidget,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create:(BuildContext context)=>AppCubit()..changeAppMode(fromShared:isDark)..createdatabase()),
+      ],
+      child: BlocConsumer<AppCubit,AppStates>(
+        listener: (context,state){},
+        builder: (context,state){
+          return  MaterialApp(
+            debugShowCheckedModeBanner: false,
+            themeMode:AppCubit.get(context).isDark? ThemeMode.dark:ThemeMode.light,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            home: HomePage(),
+            navigatorKey: navigatorKey,
+          );
+        },
+      ),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
